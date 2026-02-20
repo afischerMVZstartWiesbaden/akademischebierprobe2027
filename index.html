@@ -131,6 +131,16 @@ html,body{height:100%;overflow:hidden;background:var(--night);position:fixed;wid
   touch-action:manipulation;
 }
 /* Skip-Button */
+#tap-overlay{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:20px max(20px,env(safe-area-inset-right)) 20px max(20px,env(safe-area-inset-left));
+  background:rgba(0,0,0,.85);
+  z-index:10;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
 #skip-btn{
   position:absolute;
   bottom:max(20px,4vh);
@@ -260,13 +270,43 @@ html,body{height:100%;overflow:hidden;background:var(--night);position:fixed;wid
     <div class="slider-minmax"><span>0</span><span>11</span></div>
   </div>
   <div class="rate-card">
+    <div class="rate-card-title">🔊 SOUND</div>
+    <div class="slider-track" id="st-sound"><div class="slider-fill" id="sf-sound" style="width:45.5%"></div><div class="slider-thumb" id="sh-sound" style="left:45.5%"><span class="slider-val" id="sv-sound">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
+    <div class="rate-card-title">✋ HAPTIK</div>
+    <div class="slider-track" id="st-haptik"><div class="slider-fill" id="sf-haptik" style="width:45.5%"></div><div class="slider-thumb" id="sh-haptik" style="left:45.5%"><span class="slider-val" id="sv-haptik">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
     <div class="rate-card-title">👅 GESCHMACK</div>
     <div class="slider-track" id="st-geschmack"><div class="slider-fill" id="sf-geschmack" style="width:45.5%"></div><div class="slider-thumb" id="sh-geschmack" style="left:45.5%"><span class="slider-val" id="sv-geschmack">5</span></div></div>
     <div class="slider-minmax"><span>0</span><span>11</span></div>
   </div>
   <div class="rate-card">
+    <div class="rate-card-title">👃 AROMA</div>
+    <div class="slider-track" id="st-aroma"><div class="slider-fill" id="sf-aroma" style="width:45.5%"></div><div class="slider-thumb" id="sh-aroma" style="left:45.5%"><span class="slider-val" id="sv-aroma">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
+    <div class="rate-card-title">📊 STAMMWÜRZE</div>
+    <div class="slider-track" id="st-stammwuerze"><div class="slider-fill" id="sf-stammwuerze" style="width:45.5%"></div><div class="slider-thumb" id="sh-stammwuerze" style="left:45.5%"><span class="slider-val" id="sv-stammwuerze">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
+    <div class="rate-card-title">🌊 ABGANG</div>
+    <div class="slider-track" id="st-abgang"><div class="slider-fill" id="sf-abgang" style="width:45.5%"></div><div class="slider-thumb" id="sh-abgang" style="left:45.5%"><span class="slider-val" id="sv-abgang">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
     <div class="rate-card-title">🪑 PARKBANKTAUGLICHKEIT</div>
     <div class="slider-track" id="st-parkbank"><div class="slider-fill" id="sf-parkbank" style="width:45.5%"></div><div class="slider-thumb" id="sh-parkbank" style="left:45.5%"><span class="slider-val" id="sv-parkbank">5</span></div></div>
+    <div class="slider-minmax"><span>0</span><span>11</span></div>
+  </div>
+  <div class="rate-card">
+    <div class="rate-card-title">💯 CREDIBILITY</div>
+    <div class="slider-track" id="st-credibility"><div class="slider-fill" id="sf-credibility" style="width:45.5%"></div><div class="slider-thumb" id="sh-credibility" style="left:45.5%"><span class="slider-val" id="sv-credibility">5</span></div></div>
     <div class="slider-minmax"><span>0</span><span>11</span></div>
   </div>
   <div class="submit-wrap">
@@ -745,16 +785,6 @@ var v = document.getElementById('intro-video');
 v.addEventListener('ended', skipIntro);
 v.addEventListener('error', function(e){ console.log('video error', e); skipIntro(); });
 setTimeout(function(){ if(document.getElementById('intro-screen')) skipIntro(); }, 30000);
-</script>
-
-<script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw.js');
-}
-</script>
-
-</body>
-</html
 
 // ── ARCHIV ──────────────────────────────────────────────
 var ARCHIV_DB = DB; // gleiche DB, anderer Pfad /archiv/
@@ -888,5 +918,12 @@ function archiveProbe(probe, ratings){
 
 initSliders();
 </script>
+
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
 </body>
 </html>
